@@ -9,8 +9,10 @@ import { join } from "node:path";
 const entry =
   "The office plant died, so HR sent a condolence email, a link to the wellness portal, and a calendar invite for its replacement's onboarding.";
 
-if (entry.length < 1 || entry.length > 200 || entry.trim().length === 0) {
-  throw new Error(`entry is ${entry.length} characters, must be 1-200`);
+const MAX_CHARS = 200;
+
+if (entry.length < 1 || entry.length > MAX_CHARS || entry.trim().length === 0) {
+  throw new Error(`entry is ${entry.length} characters, must be 1-${MAX_CHARS}`);
 }
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
